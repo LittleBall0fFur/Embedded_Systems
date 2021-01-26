@@ -132,8 +132,6 @@ void play_(int _buzzer, int _tempo, bool _repeat = false) {
 void setup() {
   Serial.begin(9600);
   while(!Serial);
-  pinMode(2, INPUT);
-  play_(21, 200);
 }
 
 void loop() {
