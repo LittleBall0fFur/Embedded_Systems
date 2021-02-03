@@ -91,12 +91,26 @@ void loop() {
   Serial.print(x);
   Serial.print(" , y: ");
   Serial.print(y);
-  Serial.println(" }");
+  Serial.print(" } ");
 
   // reload r
-  if(reloadPin == LOW){
+  swi = digitalRead(reloadPin);
+  Serial.print(" reload { switch: ");
+  Serial.print(swi);
+  Serial.print(" } ");
+  if(swi == LOW){
     Keyboard.press('r');
   }else{
     Keyboard.release('r');
   }
+
+  // reboot
+  swi = digitalRead(rebootPin);
+  Serial.print(" reboot { switch: ");
+  Serial.print(swi);
+  Serial.println(" }");
+  if(swi == LOW){
+    _reboot_Teensyduino_();
+  }
+  
 }
